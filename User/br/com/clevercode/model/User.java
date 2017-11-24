@@ -23,6 +23,9 @@ public class User implements Serializable{
 	private double saldo;
 	
 	@Transient
+	private double saque;
+	
+	@Transient
 	private String notas;
 	
 	@Transient
@@ -36,11 +39,11 @@ public class User implements Serializable{
 	
 	@Transient
 	 public double getSaque() {
-		 return saldo;
+		 return saque;
 	 }
 	@Transient
-	 public void setSaque(double restante) {
-		 saldo=restante;
+	 public void setSaque(double saque) {
+		 this.saque=saque;
 	 }
 
 	public Long getId() {
@@ -60,7 +63,7 @@ public class User implements Serializable{
 	}
 
 	public double getSaldo() {
-		return getSaque();
+		return saldo;
 	}
 
 	public void setSaldo(double saldo) {

@@ -1,7 +1,7 @@
 <div class="generic-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">User </span></div>
+        <div class="panel-heading"><span class="lead">Cliente </span></div>
 		<div class="panel-body">
 	        <div class="formcontainer">
 	            <div class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
@@ -10,9 +10,9 @@
 	                <input type="hidden" ng-model="ctrl.user.id" />
 	                <div class="row">
 	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="uname">Name</label>
+	                        <label class="col-md-2 control-lable" for="uname">Nome</label>
 	                        <div class="col-md-7">
-	                            <input type="text" ng-model="ctrl.user.name" id="uname" class="username form-control input-sm" placeholder="Enter your name" readonly='readonly' ng-minlength="3"/>
+	                            <input type="text" ng-model="ctrl.user.name" id="uname" class="username form-control input-sm" placeholder="" readonly='readonly' ng-minlength="3"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -47,7 +47,7 @@
 		            <thead>
 		            <tr>
 		                <th>ID</th>
-		                <th>NAME</th>
+		                <th>NOME</th>
 		                <th>SALDO</th>
 		                <th width="100"></th>
 		                <th width="100"></th>

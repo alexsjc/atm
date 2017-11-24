@@ -50,33 +50,34 @@ public class UserServiceImpl implements UserService{
 		return findByName(user.getName()) != null;
 	}
 	
-	private  double[] getNotasDisponiveis() {
+	private static  double[] getNotasDisponiveis() {
 		return new double[] { 100, 50, 20, 10 };
 	}
 	
 	public String operacaoSaque(double saque,double saldo) {
 		final int INICIO = 0;
 		 String retorno="";
-		 if(saque>saldo) {
-			 retorno="Não há saldo suficiente para o saque.";
-		 }else {
-		  realizaOperacaoSaque(saque, INICIO,retorno);
-		 }
+		  retorno  =  saque<saldo ?  realizaOperacaoSaque(saque, INICIO,retorno) :
+		   "Saldo insuficiente para completar operação.";
+		  
 		  return retorno;
 	}
 	
-	private void realizaOperacaoSaque(Double value, int index,String retorno) {
+	private   String   realizaOperacaoSaque(Double value, int index,String retorno) {
+		 
 		if (value == getNotasDisponiveis()[index])
-			retorno = retorno + " R$ "+ getNotasDisponiveis()[index];
+			return retorno + " R$ "+ getNotasDisponiveis()[index];
 		if (value > getNotasDisponiveis()[index]) {
 			retorno = retorno +" R$ " + getNotasDisponiveis()[index];
-			  realizaOperacaoSaque(value - getNotasDisponiveis()[index], index,retorno);
+			 return  realizaOperacaoSaque(value - getNotasDisponiveis()[index], index,retorno);
 		} 
 		if (index < (getNotasDisponiveis().length - 1))
-			  realizaOperacaoSaque(value, ++index,retorno);
-		return;
+			  return realizaOperacaoSaque(value, ++index,retorno);
+		return retorno;
 		 
 }
+	
+	 
 	
 	
 	

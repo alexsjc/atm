@@ -43,7 +43,7 @@ angular.module('crudApp').controller('UserController',
                 .then(
                     function (response) {
                         console.log('User created successfully');
-                        self.successMessage = 'User created successfully';
+                        self.successMessage = 'Criado com sucesso.';
                         self.errorMessage='';
                         self.done = true;
                         self.user={};
@@ -63,8 +63,7 @@ angular.module('crudApp').controller('UserController',
             UserService.updateUser(user, id)
                 .then(
                     function (response){
-                        console.log('User updated successfully');
-                        self.successMessage='User updated successfully';
+                        self.successMessage='Atualizado com sucesso.';
                         self.errorMessage='';
                         self.done = true;
                         $scope.myForm.$setPristine();
@@ -90,15 +89,15 @@ angular.module('crudApp').controller('UserController',
                 .then(
                     function (response){
                     	 
-                        console.log(response,'<<<<<<<<<<<<<<<<,');
+                        
                         self.successMessage='Saque realizado com sucesso! Notas utilizadas:'+response.notas;
                         self.errorMessage='';
                         self.done = true;
                         $scope.myForm.$setPristine();
                     },
                     function(errResponse){
-                        console.error('Error while updating User');
-                        self.errorMessage='Error while updating User '+errResponse.data;
+                        console.error(errResponse,'<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
+                        self.errorMessage='Erro enquanto realizava operação de saque: '+errResponse.data.errorMessage;
                         self.successMessage='';
                     }
                 );

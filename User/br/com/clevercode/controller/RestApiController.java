@@ -88,6 +88,8 @@ public class RestApiController {
 
 		currentUser.setName(user.getName());
 		currentUser.setSaldo(user.getSaldo());
+		
+		 
 
 		userService.updateUser(currentUser);
 		return new ResponseEntity<>(currentUser, HttpStatus.OK);
@@ -132,8 +134,19 @@ public class RestApiController {
  
 		User currentUser = userService.findById(id);
 		 
-		
-		currentUser.setNotas(userService.operacaoSaque(user.getSaldo(),currentUser.getSaldo()));
+	 final String mensagemAoUsuario = userService.operacaoSaque(user.getSaque(),currentUser.getSaldo());
+		 if(mensagemAoUsuario.equals("Saldo insuficiente para completar operação.")) {
+			 return new ResponseEntity<>(new CustomErrorType(mensagemAoUsuario),
+						HttpStatus.EXPECTATION_FAILED);
+		 }else if(mensagemAoUsuario.equals("")) {
+			 return new ResponseEntity<>(new CustomErrorType("Não há notas disponíveis nesse valor, as notas disponíveis são 100, 50, 20, 10"),
+						HttpStatus.EXPECTATION_FAILED);
+		 }
+			currentUser.setNotas(mensagemAoUsuario);
+		 
+			 
+			 
+		 
 		currentUser.setName(user.getName());
 		currentUser.setSaldo(currentUser.getSaldo() -user.getSaldo()    );
 
