@@ -13,6 +13,6 @@ https://github.com/rest-assured/rest-assured/wiki/Usage
 
 https://github.com/ewerttonbravo/caixaeletronico
 
-![Figure 1-1](https://raw.github.com/username/repo/master/images/figure 1-1.png "Figure 1-1")
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 
