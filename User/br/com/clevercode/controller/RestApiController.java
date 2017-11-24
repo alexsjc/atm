@@ -34,24 +34,24 @@ public class RestApiController {
 	public ResponseEntity<List<User>> listAllUsers() {
 		List<User> users = userService.findAllUsers();
 		if (users.isEmpty()) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			// You many decide to return HttpStatus.NOT_FOUND
 		}
-		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 
 	// -------------------Retrieve Single User------------------------------------------
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-	public ResponseEntity<?> getUser(@PathVariable("id") long id) {
+	public ResponseEntity<Object> getUser(@PathVariable("id") long id) {
 		logger.info("Fetching User with id {}", id);
 		User user = userService.findById(id);
 		if (user == null) {
 			logger.error("User with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("User with id " + id 
+			return new ResponseEntity<>(new CustomErrorType("User with id " + id 
 					+ " not found"), HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
 	// -------------------Create a User-------------------------------------------
@@ -75,14 +75,14 @@ public class RestApiController {
 	// ------------------- Update a User ------------------------------------------------
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody User user) {
+	public ResponseEntity<Object> updateUser(@PathVariable("id") long id, @RequestBody User user) {
 		logger.info("Updating User with id {}", id);
 
 		User currentUser = userService.findById(id);
 
 		if (currentUser == null) {
 			logger.error("Unable to update. User with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("Unable to upate. User with id " + id + " not found."),
+			return new ResponseEntity<>(new CustomErrorType("Unable to upate. User with id " + id + " not found."),
 					HttpStatus.NOT_FOUND);
 		}
 
@@ -90,23 +90,23 @@ public class RestApiController {
 		currentUser.setSaldo(user.getSaldo());
 
 		userService.updateUser(currentUser);
-		return new ResponseEntity<User>(currentUser, HttpStatus.OK);
+		return new ResponseEntity<>(currentUser, HttpStatus.OK);
 	}
 
 	// ------------------- Delete a User-----------------------------------------
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
+	public ResponseEntity<Object> deleteUser(@PathVariable("id") long id) {
 		logger.info("Fetching & Deleting User with id {}", id);
 
 		User user = userService.findById(id);
 		if (user == null) {
 			logger.error("Unable to delete. User with id {} not found.", id);
-			return new ResponseEntity(new CustomErrorType("Unable to delete. User with id " + id + " not found."),
+			return new ResponseEntity<>(new CustomErrorType("Unable to delete. User with id " + id + " not found."),
 					HttpStatus.NOT_FOUND);
 		}
 		userService.deleteUserById(id);
-		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	// ------------------- Delete All Users-----------------------------
@@ -116,7 +116,7 @@ public class RestApiController {
 		logger.info("Deleting All Users");
 
 		userService.deleteAllUsers();
-		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
 	
@@ -134,19 +134,6 @@ public class RestApiController {
 		 
 		
 		currentUser.setNotas(userService.operacaoSaque(user.getSaldo(),currentUser.getSaldo()));
-		
-		 
-		
-		
-
-		if (currentUser == null) {
-			logger.error("Unable to update. User with id {} not found.", id);
-			return new ResponseEntity<>(new CustomErrorType("Unable to upate. User with id " + id + " not found."),
-					HttpStatus.NOT_FOUND);
-		}
-		
-		
-
 		currentUser.setName(user.getName());
 		currentUser.setSaldo(currentUser.getSaldo() -user.getSaldo()    );
 

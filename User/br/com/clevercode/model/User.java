@@ -60,7 +60,7 @@ public class User implements Serializable{
 	}
 
 	public double getSaldo() {
-		return saldo;
+		return getSaque();
 	}
 
 	public void setSaldo(double saldo) {
@@ -98,9 +98,8 @@ public class User implements Serializable{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (Double.doubleToLongBits(saldo) != Double.doubleToLongBits(other.saldo))
-			return false;
-		return true;
+		   
+		return (Double.doubleToLongBits(saldo) != Double.doubleToLongBits(other.saldo))?			  false : true;
 	}
 
 	@Override

@@ -21,9 +21,7 @@ public class AppController {
 	
 	@RequestMapping("/saque.html")
 	String saque(ModelMap modal) {
-		
-		modal.addAttribute("title","CRUD Example");
-		return "index";
+		return home(modal);
 	}
 
 }
