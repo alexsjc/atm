@@ -1,0 +1,9 @@
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/service/UserService.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/controller/AppController.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/service/UserServiceImpl.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/util/CustomErrorType.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/configuration/JpaConfiguration.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/controller/RestApiController.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/SpringBootCRUDApp.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/model/User.java
+/home/alex/workspace/SpringBootCRUDApplicationExample/src/main/java/com/websystique/springboot/repositories/UserRepository.java
