@@ -23,5 +23,13 @@ https://github.com/rest-assured/rest-assured/wiki/Usage
 
 https://github.com/ewerttonbravo/caixaeletronico
 
+Screenshot:
+
+![alt text](https://github.com/alexsjc/atm/raw/master/1.png "Cadastro Cliente")
+
+![alt text](https://github.com/alexsjc/atm/raw/master/2.png "Saque maior que o saldo.")
+
+![alt text](https://github.com/alexsjc/atm/raw/master/3.png "Operação correta.")
+
 
 
